@@ -23,4 +23,17 @@ export {
   SITE_ENV,
 } from './helper';
 
-export { parseContractError } from './error'
+export {
+  parseContractError
+} from './error';
+
+export {
+  isTransactionConfirmed,
+  registerSendTxEvents,
+  approveERC20Max,
+  getERC20Allowance,
+  isAddressValid,
+  getERC20Amount,
+} from './common';
+
+export * from './approvalModel';

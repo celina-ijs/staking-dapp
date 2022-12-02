@@ -1,14 +1,14 @@
-import moment from "moment";
+import { moment } from "@ijstech/components";
 import { Wallet, BigNumber, Utils, Erc20 } from "@ijstech/eth-wallet";
 import { Contracts as TimeIsMoneyContracts } from '@validapp/time-is-money-sdk';
 import { Contracts } from "@openswap/sdk";
-import { Contracts as UtilsContracts } from "@validapp/chainlink-sdk";
+import { Contracts as UtilsContracts } from "@openswap/chainlink-sdk";
 import { Contracts as CrossChainContracts } from "@ijstech/cross-chain-bridge";
 import { 
   ERC20ApprovalModel, 
   IERC20ApprovalEventOptions, 
   ITokenObject,
-} from "../global";
+} from "@staking/global";
 import { 
   getTokenMap,
   USDPeggedTokenAddressMap,
@@ -456,7 +456,7 @@ const getWETH = (wallet: Wallet): ITokenObject => {
 
 const getLPObject = async (pairAddress: string) => {
   try {
-    let wallet = Wallet.getInstance();
+    let wallet: any = Wallet.getInstance();
     const WETH = getWETH(wallet);
     let pair = new Contracts.OSWAP_Pair(wallet, pairAddress);
 
@@ -556,7 +556,7 @@ const getReservesByPair = async (pairAddress: string, tokenInAddress?: string, t
 
 const getLPRewardCurrentAPR = async (rewardOption: any, lpObject: any, lockedDays: number) => {
   if (!lpObject) return '';
-  let wallet = Wallet.getInstance();
+  let wallet: any = Wallet.getInstance();
   const WETH = getWETH(wallet);
   const WETHAddress = WETH.address!;
   let chainId = wallet.chainId;
@@ -748,7 +748,7 @@ const deployCampaign = async (campaign: StakingCampaign, callback?: any) => {
     // Transfer max reward from the admin to the reward contract.
     for (const transferReward of listTransferReward) {
       const { to, value, rewardTokenAddress } = transferReward;
-      const contract = new Contracts.OSWAP_ERC20(wallet, rewardTokenAddress);
+      const contract: any = new Contracts.OSWAP_ERC20(wallet, rewardTokenAddress);
       await contract.transfer_send({ to, value });
     }
   } catch (error) {

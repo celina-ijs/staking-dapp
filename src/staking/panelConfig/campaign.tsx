@@ -1,10 +1,9 @@
-import { Styles, Button, Modal, Container, VStack, Panel, customElements, ControlElement, Module, HStack, Icon, Input, Checkbox, application, Label, Control, Datepicker, Upload } from '@ijstech/components';
+import { Styles, Button, Modal, Container, VStack, Panel, customElements, ControlElement, Module, HStack, Icon, Input, Checkbox, application, Label, Control, Datepicker, Upload, moment } from '@ijstech/components';
 import { BigNumber } from '@ijstech/eth-wallet';
 import { DefaultDateTimeFormat, EventId, isAddressValid } from '@staking/global';
 import { getChainId, getDefaultChainId, getTokenBalance, getTokenMap, Networks, Staking, StakingCampaign } from '@staking/store';
-import moment from 'moment';
 import { StakingConfig } from './staking';
-import { isMultiple, isThemeApplied } from '../../config';
+import { isMultiple, isThemeApplied } from '@staking/config';
 
 declare global {
 	namespace JSX {

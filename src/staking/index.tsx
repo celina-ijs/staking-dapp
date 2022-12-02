@@ -1,6 +1,6 @@
-import { Module, Panel, Icon, Button, Label, VStack, HStack, Container, customElements, ControlElement, IEventBus, application, customModule, Modal, Input } from '@ijstech/components';
+import { Module, Panel, Icon, Button, Label, VStack, HStack, Container, customElements, ControlElement, IEventBus, application, customModule, Modal, Input, moment } from '@ijstech/components';
 import { formatNumber, formatDate, registerSendTxEvents, TokenMapType, PageBlock, EventId } from '@staking/global';
-import { InfuraId, Networks, getChainId, getTokenMap, getTokenIconPath, viewOnExplorerByAddress, isWalletConnected, getNetworkInfo, setTokenMap, getDefaultChainId, hasWallet, connectWallet, setDataFromSCConfig, setCurrentChainId, tokenSymbol, LockTokenType, getStakingStatus, StakingCampaign, fallBackUrl } from '@staking/store';
+import { InfuraId, Networks, getChainId, getTokenMap, getTokenIconPath, viewOnExplorerByAddress, isWalletConnected, getNetworkInfo, setTokenMap, getDefaultChainId, hasWallet, connectWallet, setDataFromSCConfig, setCurrentChainId, tokenSymbol, LockTokenType, getStakingStatus, StakingCampaign, fallBackUrl, getLockedTokenObject, getLockedTokenIconPaths, getLockedTokenSymbol } from '@staking/store';
 import {
 	getStakingTotalLocked,
 	getLPObject,
@@ -11,16 +11,10 @@ import {
 	claimToken,
 	getAllCampaignsInfo,
 } from '@staking/staking-utils';
-import {
-	getLockedTokenObject,
-	getLockedTokenSymbol,
-	getLockedTokenIconPaths,
-} from './common';
 import Assets from '@staking/assets';
-import moment from 'moment';
 import { BigNumber, Wallet, WalletPlugin } from '@ijstech/eth-wallet';
-import { Result } from '../result';
-import { getTokenUrl, isThemeApplied, maxHeight, maxWidth } from '../config';
+import { Result } from '@staking/result';
+import { getTokenUrl, isThemeApplied, maxHeight, maxWidth } from '@staking/config';
 import './staking.css';
 import { ManageStake } from './manageStake';
 import { PanelConfig } from './panelConfig';
@@ -332,7 +326,7 @@ export class StakingBlock extends Module implements PageBlock {
 	}
 
 	private getRewardToken = (tokenAddress: string) => {
-		return this.tokenMap[tokenAddress] || this.tokenMap[tokenAddress?.toLocaleLowerCase()] || {};
+		return this.tokenMap[tokenAddress] || this.tokenMap[tokenAddress?.toLocaleLowerCase()] || null;
 	}
 
 	private getLPToken = (campaign: any, token: string, chainId?: number) => {
@@ -681,7 +675,7 @@ export class StakingBlock extends Module implements PageBlock {
 					for (let idx = 0; idx < rewardsData.length; idx++) {
 						const reward = rewardsData[idx];
 						const rewardToken = this.getRewardToken(reward.rewardTokenAddress);
-						const rewardTokenDecimals = rewardToken.decimals || 18;
+						const rewardTokenDecimals = rewardToken?.decimals || 18;
 						let decimalsOffset = 18 - rewardTokenDecimals;
 						let rewardLockedDecimalsOffset = decimalsOffset;
 						if (rewardTokenDecimals !== 18 && lockedTokenDecimals !== 18) {
@@ -690,7 +684,7 @@ export class StakingBlock extends Module implements PageBlock {
 							rewardLockedDecimalsOffset = rewardTokenDecimals - lockedTokenDecimals;
 							decimalsOffset = 18 - lockedTokenDecimals;
 						}
-						const rewardSymbol = rewardToken.symbol || '';
+						const rewardSymbol = rewardToken?.symbol || '';
 						rowRewards.appendChild(
 							<i-hstack horizontalAlignment="space-between">
 								<i-label caption={`${rewardSymbol} Locked`} font={{ size: '16px', color: colorText }} />

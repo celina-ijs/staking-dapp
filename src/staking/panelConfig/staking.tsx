@@ -2,9 +2,9 @@ import { Styles, Button, Modal, Container, VStack, Panel, customElements, Contro
 import { BigNumber } from '@ijstech/eth-wallet';
 import { EventId, isAddressValid, isValidNumber, ITokenObject, limitInputNumber } from '@staking/global';
 import { getChainId, getDefaultChainId, getTokenMapData, LockTokenType, LockTokenTypeList, Reward, RewardNeeded, Staking } from '@staking/store';
-import { TokenSelection } from '../../token-selection';
+import { TokenSelection } from '@staking/token-selection';
 import { RewardConfig } from './reward';
-import { isMultiple } from '../../config';
+import { isMultiple } from '@staking/config';
 
 declare global {
 	namespace JSX {

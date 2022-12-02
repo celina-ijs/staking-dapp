@@ -1,5 +1,3 @@
-  import { getNetworkInfo } from "..";
-
   const baseRoute = 'https://route.openswap.xyz';
   
   const crossChainNativeTokenList:{[chainId: number]:{address:string,decimals:number,symbol:string,name:string,isNative:boolean,wethAddress:string}} = {
@@ -30,15 +28,6 @@
     vaultType: VaultType;
     vaults: { [key: string]: BridgeVaultConstant };
     deprecated?: boolean;
-  }
-  
-  const getBridgeVaultVersion = (chainId :number):string => {
-    let network = getNetworkInfo(chainId);
-    const isTestnet = !network.isDisabled && network.isCrossChainSupported && network.isTestnet;
-    // Testnet
-    if (isTestnet) return '0.1.5';
-    // Mainnet
-    return '1.1.1';
   }
 
   const BridgeVaultGroupList: BridgeVaultGroup[] = [
@@ -269,7 +258,6 @@
 export {
   baseRoute,
   crossChainNativeTokenList,
-  getBridgeVaultVersion,
   BridgeVaultGroupList,
   ChainTrollRegistryMap,
   CrossChainAddressMap,

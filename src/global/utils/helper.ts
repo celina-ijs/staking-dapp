@@ -1,6 +1,5 @@
 import { BigNumber } from "@ijstech/eth-wallet";
-import moment from 'moment';
-import { TokenMapType } from "..";
+import { moment } from "@ijstech/components";
 
 export enum SITE_ENV {
   DEV = 'dev',
@@ -185,7 +184,7 @@ export const getParamsFromUrl = () => {
   return urlParams;
 }
 
-export const formatNumberValue = (data: any, tokenMap: TokenMapType) => {
+export const formatNumberValue = (data: any, tokenMap: { [token: string]: any }) => {
   const { title, value, symbol, icon, prefix, isWrapped } = data;
   try {
     let limitDecimals = 18;
@@ -306,7 +305,7 @@ export const getWeekDays = () => {
   return days;
 }
 
-export const renderBalanceTooltip = (params: any, tokenMap: TokenMapType, isBold?: boolean) => {
+export const renderBalanceTooltip = (params: any, tokenMap: { [token: string]: any }, isBold?: boolean) => {
   const data = formatNumberValue(params, tokenMap);
   if (typeof data === "object") {
     const { result, tooltip } = data;

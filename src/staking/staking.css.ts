@@ -1,6 +1,6 @@
 import { Styles } from '@ijstech/components';
 import Assets from '@staking/assets';
-import { maxWidth, maxHeight } from '../config';
+import { maxWidth, maxHeight } from '@staking/config';
 
 const colorVar = {
   primaryButton: 'transparent linear-gradient(90deg, #AC1D78 0%, #E04862 100%) 0% 0% no-repeat padding-box',

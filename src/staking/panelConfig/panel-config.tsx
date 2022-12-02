@@ -1,12 +1,12 @@
 import { Styles, Button, Container, HStack, Panel, customElements, ControlElement, Module, Icon, IEventBus, application, Label, VStack, Modal } from '@ijstech/components';
 import { downloadJsonFile, EventId, registerSendTxEvents } from '@staking/global';
-import { Result } from '../../result';
+import { Result } from '@staking/result';
 import './panel-config.css';
 import { CampaignConfig } from './campaign';
 import { getChainId, getNetworkInfo, isWalletConnected, StakingCampaign } from '@staking/store';
 import { deployCampaign } from '@staking/staking-utils';
 import { Wallet } from '@ijstech/eth-wallet';
-import { isMultiple } from '../../config';
+import { isMultiple } from '@staking/config';
 declare global {
   namespace JSX {
     interface IntrinsicElements {

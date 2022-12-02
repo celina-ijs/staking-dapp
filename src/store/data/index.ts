@@ -7,7 +7,7 @@ export {
   tokenPriceAMMReference,
   getTokenIconPath,
   getOpenSwapToken,
-} from './tokens';
+} from './tokens/index';
 
 export {CoreContractAddressesByChainId} from './core';
 
@@ -16,7 +16,6 @@ export * from './staking';
 export {
   baseRoute,
   crossChainNativeTokenList,
-  getBridgeVaultVersion,
   BridgeVaultGroupList,
   ChainTrollRegistryMap,
   CrossChainAddressMap,

@@ -1,20 +1,19 @@
-import { ITokenObject } from "../../../global";
+import { ITokenObject } from "@staking/global";
+import Tokens_BSC from './mainnet/bsc.json';
+import Tokens_Ethereuem from './mainnet/ethereum.json';
+import Tokens_Polygon from './mainnet/polygon.json';
+import Tokens_Avalanche from './mainnet/avalanche.json';
+import Tokens_Fantom from './mainnet/fantom.json';
+import Tokens_Cronos from './mainnet/cronos.json'; //not added
 
-const Tokens_BSC: ITokenObject[] = require('./mainnet/bsc.json');
-const Tokens_Ethereuem: ITokenObject[] = require('./mainnet/ethereum.json');
-const Tokens_Polygon: ITokenObject[] = require('./mainnet/polygon.json');
-const Tokens_Avalanche: ITokenObject[] = require('./mainnet/avalanche.json');
-const Tokens_Fantom: ITokenObject[] = require('./mainnet/fantom.json');
-const Tokens_Cronos: ITokenObject[] = require('./mainnet/cronos.json'); //not added
-
-const Tokens_Kovan: ITokenObject[] = require('./testnet/kovan.json');
-const Tokens_BSC_Testnet: ITokenObject[] = require('./testnet/bsc-testnet.json');
-const Tokens_Fuji: ITokenObject[] = require('./testnet/fuji.json');
-const Tokens_Mumbai: ITokenObject[] = require('./testnet/mumbai.json');
-const Tokens_Fantom_Testnet: ITokenObject[] = require('./testnet/fantom-testnet.json');
-const Tokens_Amino: ITokenObject[] = require('./testnet/amino.json');
-const Tokens_AminoXTestnet: ITokenObject[] = require('./testnet/aminoX-testnet.json');
-const Tokens_Cronos_Testnet: ITokenObject[] = require('./testnet/cronos-testnet.json');
+import Tokens_Kovan from './testnet/kovan.json';
+import Tokens_BSC_Testnet from './testnet/bsc-testnet.json';
+import Tokens_Fuji from './testnet/fuji.json';
+import Tokens_Mumbai from './testnet/mumbai.json';
+import Tokens_Fantom_Testnet from './testnet/fantom-testnet.json';
+import Tokens_Amino from './testnet/amino.json';
+import Tokens_AminoXTestnet from './testnet/aminoX-testnet.json';
+import Tokens_Cronos_Testnet from './testnet/cronos-testnet.json';
 
 const DefaultERC20Tokens: { [chainId: number]: ITokenObject[] } = {
   1: Tokens_Ethereuem,

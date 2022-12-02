@@ -1,28 +1,107 @@
 {
-  "name": "@staking/main",
-  "version": "0.1.0",
-  "main": "{root}/staking/index.js",
-  "env": "mainnet",
-  "routes": [
-    {
-      "url": "#/staking",
-      "default": true,
-      "module": "./staking/index.js"
+    "name": "@staking/staking",
+    "version": "0.1.0",
+    "env": "mainnet",
+    "moduleDir": "modules",
+    "main": "@staking/staking",
+    "modules": {
+        "@staking/assets": {
+            "path": "assets",
+            "dependencies": []
+        },
+        "@staking/staking": {
+            "path": "staking",
+            "dependencies": [
+                "@openswap/sdk",
+                "@staking/global",
+                "@staking/store",
+                "@ijstech/cross-chain-bridge",
+                "@openswap/chainlink-sdk",
+                "@staking/staking-utils",
+                "@staking/assets",
+                "@ijstech/eth-wallet",
+                "@staking/result",
+                "@staking/config",
+                "@validapp/time-is-money-sdk"
+            ]
+        },
+        "@staking/global": {
+            "path": "global",
+            "dependencies": [
+                "@ijstech/eth-wallet",
+                "@openswap/sdk"
+            ]
+        },
+        "@staking/store": {
+            "path": "store",
+            "dependencies": [
+                "@ijstech/eth-wallet",
+                "@staking/global",
+                "@staking/assets",
+                "@openswap/sdk"
+            ]
+        },
+        "@staking/staking-utils": {
+            "path": "staking-utils",
+            "dependencies": [
+                "@ijstech/eth-wallet",
+                "@validapp/time-is-money-sdk",
+                "@openswap/sdk",
+                "@openswap/chainlink-sdk",
+                "@ijstech/cross-chain-bridge",
+                "@staking/global",
+                "@staking/assets",
+                "@staking/store"
+            ]
+        },
+        "@staking/config": {
+            "path": "config",
+            "dependencies": []
+        },
+        "@staking/token-selection": {
+            "path": "token-selection",
+            "dependencies": [
+                "@openswap/sdk",
+                "@staking/store",
+                "@staking/global",
+                "@staking/assets",
+                "@ijstech/eth-wallet"
+            ]
+        },
+        "@staking/result": {
+            "path": "result",
+            "dependencies": [
+                "@openswap/sdk",
+                "@ijstech/eth-wallet",
+                "@staking/store",
+                "@staking/global",
+                "@staking/assets"
+            ]
+        }
+    },
+    "routes": [
+        {
+            "url": "#/staking",
+            "default": true,
+            "module": "@staking/staking"
+        }
+    ],
+    "menus": [
+        {
+            "to": "#/staking",
+            "text": "Staking",
+            "img": "img/menu/Swap-Icon.svg"
+        }
+    ],
+    "dependencies": {
+        "@ijstech/eth-wallet": "*",
+        "@ijstech/cross-chain-bridge": "*",
+        "@openswap/troll-nft-sdk": "*",
+        "@validapp/time-is-money-sdk": "*",
+        "@validapp/cross-chain-token-sdk": "*",
+        "@ijstech/eth-contract": "*",
+        "@openswap/oracle-adaptor-sdk": "*",
+        "@openswap/chainlink-sdk": "*",
+        "@openswap/sdk": "*"
     }
-  ],
-  "menuItems": [
-    {
-      "to": "#/staking",
-      "text": "Staking",
-      "img": "{root}/assets/img/menu/Swap-Icon.svg"
-    }
-  ],
-  "dependencies": {
-    "@ijstech/eth-wallet-web3modal": "{LIB}/lib/eth-wallet-web3modal/index.js",
-    "@staking/sdks": "{root}/sdks/index.js",
-    "@staking/assets": "{root}/assets/index.js",
-    "@staking/global": "{root}/global/index.js",
-    "@staking/store": "{root}/store/index.js",
-    "@staking/staking-utils": "{root}/staking-utils/index.js"
-  }
 }

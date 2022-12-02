@@ -1,0 +1,57 @@
+{
+  "name": "@staking/staking",
+  "version": "0.1.0",
+  "env": "mainnet",
+  "moduleDir": "src",
+  "main": "@staking/staking",
+  "modules": {
+    "@staking/assets": {
+      "path": "assets"
+    },
+    "@staking/staking": {
+      "path": "staking"
+    },
+    "@staking/global": {
+      "path": "global"
+    },
+    "@staking/store": {
+      "path": "store"
+    },
+    "@staking/staking-utils": {
+      "path": "staking-utils"
+    },
+    "@staking/config": {
+      "path": "config"
+    },
+    "@staking/token-selection": {
+      "path": "token-selection"
+    },
+    "@staking/result": {
+      "path": "result"
+    }
+  },
+  "routes": [
+    {
+      "url": "#/staking",
+      "default": true,
+      "module": "@staking/staking"
+    }
+  ],
+  "menus": [
+    {
+      "to": "#/staking",
+      "text": "Staking",
+      "img": "img/menu/Swap-Icon.svg"
+    }
+  ],
+  "dependencies": {
+    "@ijstech/eth-contract": "*",
+    "@openswap/sdk": "*",
+    "@openswap/chainlink-sdk": "*",
+    "@openswap/oracle-adaptor-sdk": "*",
+    "@validapp/cross-chain-token-sdk": "*",
+    "@validapp/time-is-money-sdk": "*",
+    "@openswap/troll-nft-sdk": "*",
+    "@ijstech/cross-chain-bridge": "*"
+  }
+}

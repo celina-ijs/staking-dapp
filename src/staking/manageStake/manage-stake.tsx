@@ -1,7 +1,7 @@
-import { Button, Input, Container, VStack, HStack, customElements, ControlElement, Module, Label } from '@ijstech/components';
-import { formatNumber, ITokenObject, IERC20ApprovalAction, limitInputNumber } from '@staking/global';
-import { getTokenMap, getTokenBalances, isWalletConnected, setTokenBalances, LockTokenType, setStakingStatus } from '@staking/store';
-import { Result } from '../../result';
+import { Button, Input, Container, moment, HStack, customElements, ControlElement, Module, Label } from '@ijstech/components';
+import { ITokenObject, IERC20ApprovalAction, limitInputNumber } from '@staking/global';
+import { getTokenMap, getTokenBalances, isWalletConnected, setTokenBalances, LockTokenType, setStakingStatus, getLockedTokenObject, getLockedTokenSymbol } from '@staking/store';
+import { Result } from '@staking/result';
 import {
   lockToken,
   withdrawToken,
@@ -12,14 +12,9 @@ import {
   getApprovalModelAction,
   getStakingTotalLocked,
 } from '@staking/staking-utils';
-import {
-  getLockedTokenObject,
-  getLockedTokenSymbol,
-} from '../common';
 import { BigNumber } from '@ijstech/eth-wallet';
+import { isThemeApplied } from '@staking/config';
 import './manage-stake.css';
-import moment from 'moment';
-import { isThemeApplied } from '../../config';
 
 enum CurrentMode {
   STAKE,
